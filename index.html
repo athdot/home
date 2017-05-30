@@ -11,9 +11,7 @@
         Home
       </p>
       <script>
-      var loc = window.location;
-      console.log(loc);
-      	if(loc === "https://athdot.github.io/home/"){
+      	if(window.location.href === "https://athdot.github.io/home/"){
         alert("=)");
         	document.getElementById("home").style = "background-color: rgba(100,100,100,1);";
         }else{
@@ -26,7 +24,7 @@
         Projects
       </p>
       <script>
-      	if(window.location === "https://athdot.github.io/projects/"){
+      	if(window.location.href === "https://athdot.github.io/projects/"){
         	document.getElementById("projects").style = "background-color: rgba(100,100,100,1);";
         }else{
         	document.getElementById("projects").style = "background-color: rgba(0,0,0,0);";
@@ -38,7 +36,7 @@
         About Me
       </p>
       <script>
-      	if(window.location === "https://athdot.github.io/about/"){
+      	if(window.location.href === "https://athdot.github.io/about/"){
         	document.getElementById("about").style = "background-color: rgba(100,100,100,1);";
         }else{
         	document.getElementById("about").style = "background-color: rgba(0,0,0,0);";
@@ -50,7 +48,7 @@
         Contact Me
       </p>
       <script>
-      	if(window.location === "https://athdot.github.io/contact/"){
+      	if(window.location.href === "https://athdot.github.io/contact/"){
         	document.getElementById("contact").style = "background-color: rgba(100,100,100,1);";
         }else{
         	document.getElementById("contact").style = "background-color: rgba(0,0,0,0);";
