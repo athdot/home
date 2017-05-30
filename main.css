@@ -18,16 +18,17 @@
       p {
         font-family: Verdana, Geneva, sans-serif;
         color: lightgray;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -120%);
       }
       
       p:hover {
         color: white;
       }
-      
+      .top div p{
+         top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -120%);
+}
       div {
         position: absolute;
         top: 0;
