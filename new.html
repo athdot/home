@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Athdot Multimedia</title>
+    <style>
+      body {
+        background-color: white;
+      }
+
+      #topBar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        background-color: rgb(45, 45, 45);
+        box-shadow: 0px 4px 10px rgb(100, 100, 100);
+        z-index: 1000;
+      }
+
+      #imag {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 130px;
+        height: 85px;
+        transform: translateY(-50%);
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div id="topBar">
+      <img id="imag" src="https://athdot.github.io/athdot-multimedia.png" />
+    </div>
+    <div id="slideMaster">
+      <div id="slides" style="position:absolute; top: 50px; left: 0; width: 100%; height: 300px; background-color: black;">
+        <div id="0">
+          <video style="width: 100%; height: 100%;" autoplay loop>
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+      <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+      Your browser does not support HTML5 video.
+    </video>
+        </div>
+        <div id="1" style="background-color: gray;">
+          su
+        </div>
+        <div id="2">
+          supe
+        </div>
+        <div id="3">
+          super
+        </div>
+      </div>
+      <script id="slidesJS">
+        var slides = document.getElementById("slides");
+        var totalSlides = slides.childElementCount;
+        var selectedSlide = 0;
+        var slideOpacitys = new Array(totalSlides);
+        for (var i = 0; i < totalSlides; i++) {
+          var currentSlide = document.getElementById(i);
+          slideOpacitys[i] = 0;
+          if (currentSlide.getAttribute("style") == null || currentSlide.getAttribute("style") == "") {
+            currentSlide.style = "position:absolute; top: 0; left: 0; width: 100%; height: " + slides.style.height + "; opacity: " + slideOpacitys[i] + ";";
+          } else {
+            currentSlide.style = "position:absolute; top: 0; left: 0; width: 100%; height: " + slides.style.height + "; opacity: " + slideOpacitys[i] + ";" + currentSlide.style.cssText;
+          }
+        }
+        var fadeSpeed = 0.007;
+        var slideCounter = 0;
+        var maxTime = 300;
+        setInterval(function() {
+          for (var i = 0; i < totalSlides; i++) {
+            var currentSlide = document.getElementById(i);
+            var cop = slideOpacitys[i];
+            if (i == selectedSlide) {
+              if (cop < 1) {
+                cop += fadeSpeed;
+              }
+              if (cop > 1) {
+                cop -= fadeSpeed;
+              }
+            } else {
+              if (cop < 0) {
+                cop += fadeSpeed;
+              }
+              if (cop > 0) {
+                cop -= fadeSpeed;
+              }
+            }
+            currentSlide.style.opacity = cop;
+            slideOpacitys[i] = cop;
+          }
+          slideCounter++;
+          if (slideCounter > maxTime) {
+            slideCounter = 0;
+            selectedSlide++;
+            if (selectedSlide > 3) {
+              selectedSlide = 0;
+            }
+          }
+        }, 10);
+
+      </script>
+    </div>
+  </body>
+
+</html>
