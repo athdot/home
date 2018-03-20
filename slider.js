@@ -34,6 +34,11 @@
               }
             }
             currentSlide.style.opacity = cop;
+            if(cop > 0.5){
+                currentSlide.style.zIndex = "900";       
+            }else{
+                currentSlide.style.zIndex = "800";       
+            }
             slideOpacitys[i] = cop;
           }
           slideCounter++;
