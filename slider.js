@@ -34,8 +34,9 @@
               }
             }
             currentSlide.style.opacity = cop;
-            if(cop > 0.5){
-                currentSlide.style.zIndex = "900";       
+            if(selectedSlide == i && cop > 0.5){
+                currentSlide.style.zIndex = "900";
+                document.write("ss");
             }else{
                 currentSlide.style.zIndex = "800";       
             }
