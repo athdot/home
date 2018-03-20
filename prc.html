@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://athdot.github.io/home/processing.min.js"></script>
+  </head>
+  <body>
+    <script>
+      float max = 10;
+float maxDegreeChange = 50;
+float maxB = 3;
+float mh = 100;
+int trees = 49;
+float pulse = 1;
+float pulseClose = 1;
+
+void setup(){
+  size(window.innerWidth,window.innerHeight);
+  background(0);
+  float[] s = {width/2,height/2};
+  for(int i = 0; i < trees; i++){
+    tree(0,s,mh,(360/trees)*i);
+  }
+}
+
+void tree(int branchIn,float[] parentStart,float h,float degree){
+  if(branchIn < max){
+    float randCol = 255-random(0,50);
+    float distance = dist(width/2,height/2,parentStart[0],parentStart[1]);
+    randCol -= distance/3;
+    randCol = randCol*pulse;
+    stroke(0,randCol,randCol);
+    float end1 = -sin(radians(degree))*h+parentStart[0];
+    float end2 = -cos(radians(degree))*h+parentStart[1];
+    line(parentStart[0], parentStart[1], end1, end2);
+    float[] ss = {end1,end2};
+      tree(branchIn+1,ss,mh,degree-maxDegreeChange);
+      tree(branchIn+1,ss,mh,degree+maxDegreeChange);
+  }
+}
+
+void draw(){
+  background(0);
+  if(pulse < pulseClose){
+    pulse += 0.01;
+  }else if(pulse > pulseClose){
+    pulse -= 0.01;
+  }
+  pulseClose = random(0,15)/10;
+  float[] s = {width/2,height/2};
+  for(int i = 0; i < trees; i++){
+    tree(0,s,mh,(360/trees)*i);
+  }
+  max = mouseX/100+1;
+}
+
+void keyPressed() {
+  if (key == 'w') {
+    maxDegreeChange++;
+  } else {
+    maxDegreeChange--;
+  }
+}
+    </script>
+  </body>
+ </html>
